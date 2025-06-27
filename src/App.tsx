@@ -103,15 +103,15 @@ const App = () => {
     }
   };
 
-  const { firstNumber, secondNumber, operator, initialValue } = state;
+  const { firstNumber, secondNumber, operator } = state;
 
   const result =
     firstNumber !== null && secondNumber !== null && operator !== ""
-      ? `${firstNumber} ${operator} ${secondNumber} = ${initialValue}`
+      ? `${firstNumber} ${operator} ${secondNumber}`
       : null;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-2xl mb-4">
         {result ?? `${firstNumber ?? ""} ${operator} ${secondNumber ?? ""}`}
       </h1>
