@@ -111,18 +111,34 @@ const App = () => {
       : null;
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h1 className="text-2xl mb-4">
         {result ?? `${firstNumber ?? ""} ${operator} ${secondNumber ?? ""}`}
       </h1>
-
-      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "+", "-", "*", "/", "=", "C"].map(
-        (item, index) => (
-          <Button handleClick={() => handleClick(item)} key={index}>
-            {item}
-          </Button>
-        )
-      )}
+      <div className="grid grid-cols-4 gap-3 max-w-[300px]">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "+", "-", "*", "/", "=", "C"].map(
+          (item, index) => (
+            <Button
+              handleClick={() => handleClick(item)}
+              key={index}
+              className={`
+    w-16 h-16 m-1 rounded text-white font-semibold text-lg transition duration-200
+    ${
+      typeof item === "number"
+        ? "bg-blue-600 hover:bg-blue-700 active:bg-blue-800"
+        : item === "="
+        ? "bg-green-600 hover:bg-green-700 active:bg-green-800"
+        : item === "C"
+        ? "bg-red-600 hover:bg-red-700 active:bg-red-800"
+        : "bg-yellow-600 hover:bg-yellow-700 active:bg-yellow-800"
+    }
+  `}
+            >
+              {item}
+            </Button>
+          )
+        )}
+      </div>
     </div>
   );
 };
